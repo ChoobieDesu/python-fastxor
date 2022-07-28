@@ -19,7 +19,7 @@ static PyObject *fast_xor_inplace(PyObject *self, PyObject *args) {
     char *buf1 = (char*)buffer1.buf;
     char *buf2 = (char*)buffer2.buf;
     for(int i = 0; i < buffer1.len; i++)
-        buf1[i] ^= buf2[i];
+        buf1[i] ^= buf2[i % buffer2.len];
 
     PyBuffer_Release(&buffer1);
     PyBuffer_Release(&buffer2);
